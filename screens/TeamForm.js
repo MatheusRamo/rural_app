@@ -6,7 +6,7 @@ import { HeaderForm } from '../components/HeaderForm';
 
 import { TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import Select from '../components/Select';
+import { Select } from '../components/Select';
 
 
 const TeamForm = ({ navigation }) => {

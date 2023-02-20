@@ -1,12 +1,9 @@
-import { StyleSheet, Text, TextInput, ScrollView} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
+
+import { CheckBox } from '../components/CheckBox';
 import { Button } from '../components/Button';
 import { HeaderForm } from '../components/HeaderForm';
-
-
-
-import React from 'react';
-import { View } from 'react-native';
-import CheckBox from '../components/CheckBox';
 
 const TeamConditionForm = ({ navigation }) => {
 

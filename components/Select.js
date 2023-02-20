@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 
-function Select({options, onChangeSelect, text}) {
+export function Select({options, onChangeSelect, text}) {
     const [txt, setTxt] = useState(text)
 
     return (
@@ -30,5 +30,3 @@ const styles = StyleSheet.create({
       borderRadius: 8,
     }
   });
-
-export default Select;

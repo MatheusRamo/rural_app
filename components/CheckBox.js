@@ -1,6 +1,6 @@
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-function CheckBox({ title}) {
+export function CheckBox({ title}) {
 
     return (
         <>
@@ -15,5 +15,3 @@ function CheckBox({ title}) {
         </>
     );
 };
-
-export default CheckBox;
