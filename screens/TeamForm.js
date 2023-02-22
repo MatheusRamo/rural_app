@@ -1,31 +1,62 @@
 import { View } from 'react-native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import uuid from 'react-native-uuid';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+
 import { Button } from '../components/Button';
 import { HeaderForm } from '../components/HeaderForm';
 
-import { TouchableOpacity } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import { Select } from '../components/Select';
+import { drivers } from '../db/drivers'
+import { cars } from '../db/cars';
 
 
 const TeamForm = ({ navigation }) => {
 
+  const [driver, setDriver] = useState("");
+  const [car, setCar] = useState("");
+
+  const { getItem, setItem } = useAsyncStorage("@saveteam:team");
+
+  async function handleNew() {
+      const id = uuid.v4();
+
+      const newData = {
+        id,
+        driver,
+        car
+      }
+
+      const data = [newData];
+      await setItem(JSON.stringify(data));
+
+  }
 
   return (
     <>
       <HeaderForm title="Cadastro da Equipe" />
       <ScrollView>
+        <View>
+          <Text style={styles.label}>Motorista</Text>
+          <Select options={drivers} onChangeSelect={(name) => {setDriver(name)}} text="Selecione o Motorista" />
+        </View>
 
-      <Select text="Selecione o Motorista"/>
+        <View>
+          <Text style={styles.label}>Veiculo</Text>
+          <Select options={cars} onChangeSelect={(name) => {setCar(name)}} text="Selecione o Veiculo" />
+        </View>
 
-      <Select text="Selecione o Veiculo"/>
- 
-      <View style={styles.container}>
-        <Button
-          title="Proximo" onPress={() => navigation.navigate('TeamCondition')}
-        />
-      </View>
+
+        <View style={styles.container}>
+          <Button
+            title="Proximo" onPress={() => {
+            navigation.navigate('TeamCondition')
+            handleNew()
+          }}
+          />
+        </View>
       </ScrollView>
     </>
   );
@@ -39,6 +70,10 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: 'bold',
+    fontSize: 18,
+    paddingBottom: 5,
+    paddingLeft: 20,
+    alignItems: 'center'
   },
   input: {
     borderWidth: 1,
@@ -65,8 +100,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: '#ccc',
     borderWidth: 0.2,
-    padding:10,
-    margin:10,
+    padding: 10,
+    margin: 10,
   },
 });
 

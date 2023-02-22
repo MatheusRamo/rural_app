@@ -12,7 +12,6 @@ const TeamConditionForm = ({ navigation }) => {
       <HeaderForm title="Planejamento da Equipe" />
       <ScrollView>
         <View style={styles.container}>
-
           <Text style={styles.label}>01 - A equipe está em boas condições Físicas e Psicológicas?</Text>
           <View style={styles.checkBox}>
             <CheckBox title="Sim" />
@@ -60,7 +59,7 @@ const TeamConditionForm = ({ navigation }) => {
           </View>
 
           <Button
-            title="Proximo" onPress={() => navigation.navigate('Home')}
+            title="Proximo" onPress={() => navigation.navigate('Task')}
           />
         </View>
       </ScrollView>
